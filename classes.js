@@ -105,13 +105,14 @@ class ProgressiveManager extends Manager {
         this.bonus = bonus
     }
 
-    managerTitle(ProgressiveManager) {
-        if (this.super.reports === 0) this.title = 'Not a manager'
-        else if (this.reports.length >= 1 && this.reports.length <= 3) this.title = 'Barely manager'
-        else if (this.reports.length >= 4 && this.reports.length <= 10) this.title = 'Mostly manager'
+    hire() {
+        super.hire()
+        if (this.reports.length === 0) this.title = 'Not a manager'
+        else if (this.reports.length >= 1 && this.reports.length <= 3) this.title = 'Barely Manager'
+        else if (this.reports.length >= 4 && this.reports.length <= 10) this.title = 'Mostly Manager'
         else if (this.reports.length >= 11 && this.reports.length <= 50) this.title = 'Manager'
         else if (this.reports.length >= 51 && this.reports.length <= 100) this.title = 'Manager Plus'
-        else if (this.reports.length >= 101) this.title = 'Bestest manager'
+        else if (this.reports.length >= 101) this.title = 'Bestest Manager'
     }
 
     fire() {
@@ -144,4 +145,27 @@ class ProgressiveManager extends Manager {
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+    constructor(widgets_made_count = 0, wear_and_tear_count = 0, needs_reboot = false) {
+        this.widgets_made_count = widgets_made_count
+        this.wear_and_tear_count = wear_and_tear_count
+        this.needs_reboot = needs_reboot
+    }
+
+    makeWidgets(num) {
+        this.widgets_made_count += num
+        this.wear_and_tear_count += Math.floor(num / 50)
+    }
+
+    fixMachine() {
+        this.needs_reboot = true
+    }
+
+    reboot() {
+        return () => {
+            this.wear_and_tear_count -= 10
+            this.needs_reboot = false
+
+        }
+    }
+}

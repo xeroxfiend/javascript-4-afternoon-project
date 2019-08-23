@@ -17,9 +17,13 @@
   email --> which is a string
   getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 */
-  
 
-//Code Here
+
+const user = {
+    userName: 'Bri',
+    email: 'brianchristopherlowe@gmail.com',
+    getUsername: () => this.userName
+}
 
 
 
@@ -30,18 +34,18 @@
 */
 
 class Animal {
-  constructor(name, species, food) {
-    this.name = name
-    this.species = species
-    this.food = food
-  }
+    constructor(name, species, food) {
+        this.name = name
+        this.species = species
+        this.food = food
+    }
 
-  eat() {
-    return this.name + ' is a ' + this.species + ' and likes to eat ' + this.food;
-  }
+    eat() {
+        return this.name + ' is a ' + this.species + ' and likes to eat ' + this.food;
+    }
 }
 
-//Code Here
+const animal1 = new Animal('Clifford', 'human', 'Cornflakes')
 
 
 
@@ -52,16 +56,16 @@ class Animal {
 */
 
 function sayHi(greeting) {
-  return this.name + ' says ' + greeting
+    return this.name + ' says ' + greeting
 }
 
 let who = {
-  name: 'Scuba Steve',
-  age: 35,
-  location: 'Belize'
+    name: 'Scuba Steve',
+    age: 35,
+    location: 'Belize'
 }
 
-//Code Here
+const whoSaysHi = sayHi.bind(who)
 
 
 
@@ -72,48 +76,48 @@ let who = {
 */
 
 function whatIsThis() {
-  return this
+    return this
 }
 
 // uncomment the line below and tell us what the context of "this" is for whatIsThis()
-//let context1 = ???
+let context1 = window
 
 let product = {
-  name: 'snake plant',
-  price: 45.32,
-  description: 'Beautiful plant that can help filter the air inside your house.'
+    name: 'snake plant',
+    price: 45.32,
+    description: 'Beautiful plant that can help filter the air inside your house.'
 }
 
 let func = whatIsThis.bind(product)
 
 // uncomment the line below and tell us what the context of "this" is when we invoke func
-//let context2 = ???
+let context2 = product
 
 let vacation = {
-  location: 'Hawaii',
-  price: 3000,
-  days: 7,
-  nights: 6,
-  whatIsThis: whatIsThis
+    location: 'Hawaii',
+    price: 3000,
+    days: 7,
+    nights: 6,
+    whatIsThis: whatIsThis
 }
 
 // uncomment the line below and tell us what the context of "this" is when we invoke vacation.whatIsThis
-//let context3 = ???
+let context3 = vacation
 
 
 class Family {
-  constructor(numParents, numKids, numPets) {
-    this.numParents = numPets;
-    this.numKids = numKids;
-    this.numPets = numPets;
-  }
+    constructor(numParents, numKids, numPets) {
+        this.numParents = numPets;
+        this.numKids = numKids;
+        this.numPets = numPets;
+    }
 
-  whatIsThis() {
-    return this
-  }
+    whatIsThis() {
+        return this
+    }
 }
 
 let family1 = new Family(2, 4, 1)
 
 // uncomment the line below and tell us what the context of "this" is for the instance of Family created above.
-//let context4 = ???
+let context4 = family1
